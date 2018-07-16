@@ -13,6 +13,7 @@
 # Present a working proof-of-concept for Roger's battle engine that includes loot drops
 # Each battle features items looted from the previous battle as weapon choices
 "test comment"
+# test comment 2 - rjohnson
 """MVP task list: 
 done - weapon selection
 done - hero attacking monster
