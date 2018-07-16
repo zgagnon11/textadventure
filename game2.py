@@ -12,7 +12,7 @@
 # Track NPC (or Monster) stats by subclassing Player and adding some customizations
 # Present a working proof-of-concept for Roger's battle engine that includes loot drops
 # Each battle features items looted from the previous battle as weapon choices
-
+"test comment"
 """MVP task list: 
 done - weapon selection
 done - hero attacking monster
