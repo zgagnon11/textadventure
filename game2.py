@@ -18,7 +18,7 @@ done - weapon selection
 done - hero attacking monster
 done - monster attacking hero
 done - hero dies, end program
-z - monster dies, drops loot (weapon)
+done - monster dies, drops loot (weapon)
 r - updating hero inventory with loot drop (weapon)
 r - monster dies, new monster to fight """
 
@@ -53,7 +53,7 @@ def hero_weapon_selection():
     return None
 
 #Drops the opponents weapon so that the weapon can be added to the users inventory so it can be selected in hero_weapon_selection()
-def drop_opponent_weapon():
+def update_player_inventory():
     if monster.health <= 0:
         opps_weapon = monster.weapon
         print("The monster dropped: " + str(opps_weapon) + ". " + "Adding to the inventory")
