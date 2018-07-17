@@ -55,7 +55,7 @@ def hero_weapon_selection():
 # function that captures the hero's damage dealt
 def hero_attack():                                                      
     hero_damage = hero.damage_dealt()
-    monster.health = monster.health - hero_damage
+    monster.health = monster.damage_taken(hero_damage)
     print("Debug - Monster's health should be: " + str(monster.health))
     print("Debug - hero dmg dealt is " + str(hero_damage))
 
@@ -63,11 +63,12 @@ def hero_attack():
 
 # function that captures the monster's damage dealt
 def monster_attack():
-    monster_weapon = monster.opponent_weapon()
-    monster.weapon = [monster_weapon]
+    monster.opponent_weapon()
     monster_damage = monster.damage_dealt()
-    hero.health = hero.health - monster_damage
+    hero.health = hero.damage_taken(monster_damage)
     print("Debug - Hero's health should be: " + str(hero.health))
+    print("Debug - The monsters weapon should be: " + str(monster.weapon))
+    print("Debug - the monsters damage should be: " + str(monster.damage_dealt()))
 
     return hero.health
 
@@ -81,9 +82,11 @@ if __name__ == "__main__":
     
 
     # while hero.health > 0 and monster.health > 0:                         # loop until hit points drop below zero
+   
     hero_weapon_selection() 
     hero_attack()   
-    monster_attack()                                             # hero selects weapon
+    monster_attack() 
+                                                # hero selects weapon
 
     print("Debug - hero weapon is " + hero.weapon["type"])
     print("Debug - hero damage is " + str(hero.weapon["dmg"]))
