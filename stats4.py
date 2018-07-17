@@ -21,11 +21,11 @@ class Entities:
 
         return damage
 
-"""     #Calculates the damage taken using the strength and the randomized weapon value range
+    #Calculates the damage taken using the strength and the randomized weapon value range
     def damage_taken(self, damage):
         self.health = self.health - damage
 
-        return self.health """
+        return self.health
 
 
 #Parent class for the player's stats
@@ -51,17 +51,17 @@ class Opponent(Entities):
         self.strength = 20
         self.stamina = 200
         self.inventory = [{"type": "ax", "dmg": 10}, {"type": "mace", "dmg": 8}, {"type": "lance", "dmg": 7}, {"type": "dung pile", "dmg": 1}]
-        self.weapon = []
+        self.weapon = {"type": "ax", "dmg": 10}
         self.money = random.randrange(100)
 
     #Randomly sets the Opponents weapon from the inventory and sets it as the "equipped" weapon in self.weapon
     def opponent_weapon(self):
         random_weapon = random.choice(self.inventory)
-        self.weapon = [random_weapon]
+        self.weapon = random_weapon
 
         return self.weapon
 
-    #Gets the randomly generated money for the monster so it can be added to the players wallet later
+     #Gets the randomly generated money for the monster so it can be added to the players wallet later
     def get_opponent_money(self):
         return self.money
 
