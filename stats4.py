@@ -51,7 +51,7 @@ class Opponent(Entities):
         self.strength = 20
         self.stamina = 200
         self.inventory = [{"type": "ax", "dmg": 10}, {"type": "mace", "dmg": 8}, {"type": "lance", "dmg": 7}, {"type": "dung pile", "dmg": 1}]
-        self.weapon = random.choice(self.inventory)
+        self.weapon = {"type": "ax", "dmg": 10}
         self.money = random.randrange(100)
 
     #Randomly sets the Opponents weapon from the inventory and sets it as the "equipped" weapon in self.weapon

@@ -16,7 +16,7 @@
 """MVP task list: 
 done - weapon selection
 done - hero attacking monster
-z - monster attacking hero
+done - monster attacking hero
 done - hero dies, end program
 z - monster dies, drops loot (weapon)
 r - updating hero inventory with loot drop (weapon)
@@ -52,25 +52,34 @@ def hero_weapon_selection():
 
     return None
 
+#Drops the opponents weapon so that the weapon can be added to the users inventory so it can be selected in hero_weapon_selection()
+def drop_opponent_weapon():
+    if monster.health <= 0:
+        opps_weapon = monster.weapon
+        print("The monster dropped: " + str(opps_weapon) + ". " + "Adding to the inventory")
+        hero.inventory.append(opps_weapon)
+
+        return None
+
 # function that captures the hero's damage dealt
 def hero_attack():                                                      
     hero_damage = hero.damage_dealt()
     monster.health = monster.damage_taken(hero_damage)
-    print("Debug - Monster's health should be: " + str(monster.health))
     print("Debug - hero dmg dealt is " + str(hero_damage))
-
-    return monster.health
+    print("Debug - Monster's health should be: " + str(monster.health))
+    
+    return None
 
 # function that captures the monster's damage dealt
 def monster_attack():
     monster.opponent_weapon()
     monster_damage = monster.damage_dealt()
     hero.health = hero.damage_taken(monster_damage)
+    print("Debug - the monsters damage should be: " + str(monster.damage_dealt()))
     print("Debug - Hero's health should be: " + str(hero.health))
     print("Debug - The monsters weapon should be: " + str(monster.weapon))
-    print("Debug - the monsters damage should be: " + str(monster.damage_dealt()))
-
-    return hero.health
+    
+    return None
 
 
 if __name__ == "__main__":
