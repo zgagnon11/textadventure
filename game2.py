@@ -90,10 +90,11 @@ if __name__ == "__main__":
     
 
     # while hero.health > 0 and monster.health > 0:                         # loop until hit points drop below zero
-   
+    
     hero_weapon_selection() 
     hero_attack()   
     monster_attack() 
+    drop_opponent_weapon()
                                                 # hero selects weapon
 
     print("Debug - hero weapon is " + hero.weapon["type"])
