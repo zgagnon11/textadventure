@@ -53,13 +53,12 @@ def hero_weapon_selection():
     return None
 
 #Drops the opponents weapon so that the weapon can be added to the users inventory so it can be selected in hero_weapon_selection()
-def update_player_inventory():
+def drop_opponent_weapon():
     if monster.health <= 0:
         opps_weapon = monster.weapon
         print("The monster dropped: " + str(opps_weapon) + ". " + "Adding to the inventory")
-        hero.inventory.append(opps_weapon)
 
-        return None
+        return opps_weapon
 
 # function that captures the hero's damage dealt
 def hero_attack():                                                      
