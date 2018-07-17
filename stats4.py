@@ -23,9 +23,9 @@ class Entities:
 
     #Calculates the damage taken using the strength and the randomized weapon value range
     def damage_taken(self, damage):
-        self.health = self.health - damage
+        entity_health = self.health - damage
 
-        return self.health
+        return entity_health
 
 
 #Parent class for the player's stats
