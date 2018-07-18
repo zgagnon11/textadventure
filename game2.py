@@ -1,5 +1,5 @@
 import random 
-import time                                                          # import random for randomized calculations
+import time                                                             # import random for randomized calculations
 from stats4 import Player, Opponent                                     # importing player and opponent classes
 
 # function where the hero (user) selects the weapon to be used in the battle with the monster
@@ -15,13 +15,15 @@ def hero_weapon_selection():
     hero_inventory()                                                    # display the hero's inventory
 
     hero_input = input("Enter the number of your weapon of choice: ")
-    while hero_input == "":
+
+    if hero_input not in hero.inventory:
         print("The enemy approaches, you need to choose your weapon!")
+        print("Please use a valid inventory number")
         hero_input = input("Enter the number of your weapon of choice: ")
-        continue
+
 
     hero.weapon = hero.inventory[int(hero_input) - 1]                   # set hero weapon to the user selection
-
+    
     return None
 
 # function to display the hero's inventory 
