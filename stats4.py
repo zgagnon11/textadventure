@@ -47,7 +47,7 @@ class Player(Entities):
 #Class for the Opponent with inherited attributes from the Player class
 class Opponent(Entities):
     def __init__(self):
-        self.health = 50
+        self.health = random.randrange(30, 70)
         self.strength = 12
         self.stamina = 200
         self.inventory = [
