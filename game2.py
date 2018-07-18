@@ -72,7 +72,6 @@ def hero_attack():
 
 # function that captures the monster's damage dealt
 def monster_attack():
-    monster.opponent_weapon()
     monster_damage = monster.damage_dealt()
     hero.health = hero.damage_taken(monster_damage)
 
@@ -95,7 +94,9 @@ def do_battle():
 
 if __name__ == "__main__":
     hero = Player()                                                         # creates hero object from Player class
-    monster = Opponent()                                                    # creates monster object from Opponent subclass
+    monster = Opponent()  
+    monster.opponent_weapon()
+    print(monster.opponent_weapon())                                                  # creates monster object from Opponent subclass
         
     hero_weapon_selection()                                                 # player selects hero's weapon
     do_battle()                                                             # invoke the battle function
