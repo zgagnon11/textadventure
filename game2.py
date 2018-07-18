@@ -1,30 +1,5 @@
-# You are a member of a small game company specializing in text adventure games. 
-# This sprint, you have been tasked with writing the battle engine for the latest title.
-# Both the Hero and the Monster start with the same number of hitpoints
-# Each time the user presses the enter button, the Hero attacks the monster
-# The amount of damage and remaining hitpoints are displayed
-# After the monster is attacked, it attacks the Hero, with damage and remaining hitpoints being displayed
-# Once either the Hero or the monster dip below 1 hitpoint, they are declared dead and the winner is displayed
-# HINT: Research the random.randrange library
-# Extra Credit: If the Hero uses a weapon, modify the damage algorithm accordingly
-# --------------------------------------------------------------------
-# Track Player stats using a Player class
-# Track NPC (or Monster) stats by subclassing Player and adding some customizations
-# Present a working proof-of-concept for Roger's battle engine that includes loot drops
-# Each battle features items looted from the previous battle as weapon choices
-
-"""MVP task list: 
-done - weapon selection
-done - hero attacking monster
-done - monster attacking hero
-done - iterate through battle
-done - monster dies, drops loot (weapon)
-done - updating hero inventory with loot drop (weapon)
-done - monster is dead, new battle begins
-done - hero dies, end program """
-
-
-import random                                                           # import random for randomized calculations
+import random 
+import time                                                          # import random for randomized calculations
 from stats4 import Player, Opponent                                     # importing player and opponent classes
 
 # function where the hero (user) selects the weapon to be used in the battle with the monster
@@ -64,9 +39,8 @@ def hero_inventory():
 def hero_attack():                                                      
     hero_damage = hero.damage_dealt()
     monster.health = monster.damage_taken(hero_damage)
-    # print("Debug - hero dmg dealt is " + str(hero_damage))
-    # print("Debug - Monster's health should be: " + str(monster.health))
     print("Hero hit for " + str(hero_damage))
+    time.sleep(.5)
     
     return None
 
@@ -80,6 +54,7 @@ def monster_attack():
     print("Hero HP: " + str(hero.health) + "      " + "Monster HP: " + str(monster.health)) # display hero and monster hp
     print("----------------------------")
     print()
+    time.sleep(.5)
     
     return None
 
