@@ -35,16 +35,15 @@ def hero_inventory():
 
     return None
 
-# function that captures the hero's damage dealt
+# function that captures the hero's damage dealt and updates the monsters health
 def hero_attack():                                                      
     hero_damage = hero.damage_dealt()
     monster.health = monster.damage_taken(hero_damage)
     print("Hero hit for " + str(hero_damage))
-    time.sleep(.5)
     
     return None
 
-# function that captures the monster's damage dealt
+# function that captures the monster's damage dealt and updated the heros health
 def monster_attack():
     monster_damage = monster.damage_dealt()
     hero.health = hero.damage_taken(monster_damage)
@@ -54,15 +53,16 @@ def monster_attack():
     print("Hero HP: " + str(hero.health) + "      " + "Monster HP: " + str(monster.health)) # display hero and monster hp
     print("----------------------------")
     print()
-    time.sleep(.5)
+    #time.sleep(.5)
     
     return None
 
 # function to iterate through the hero/monster battle
 def do_battle():
     while hero.health > 0 and monster.health > 0:                           # loop until hit points drop below zero 
-        hero_attack()   
+        hero_attack()  
         monster_attack() 
+        time.sleep(.5)
 
     return None
 
