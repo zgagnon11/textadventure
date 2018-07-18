@@ -12,35 +12,32 @@
 # Track NPC (or Monster) stats by subclassing Player and adding some customizations
 # Present a working proof-of-concept for Roger's battle engine that includes loot drops
 # Each battle features items looted from the previous battle as weapon choices
-"test comment"
-# test comment 2 - rjohnson
+
 """MVP task list: 
 done - weapon selection
 done - hero attacking monster
 done - monster attacking hero
-done - hero dies, end program
+done - iterate through battle
 done - monster dies, drops loot (weapon)
-r - updating hero inventory with loot drop (weapon)
-r - monster dies, new monster to fight """
+done - updating hero inventory with loot drop (weapon)
+done - monster is dead, new battle begins
+done - hero dies, end program """
 
 
 import random                                                           # import random for randomized calculations
-from stats4 import Player, Opponent                                      # importing player and opponent classes
+from stats4 import Player, Opponent                                     # importing player and opponent classes
 
 # function where the hero (user) selects the weapon to be used in the battle with the monster
 def hero_weapon_selection():
-    print("Debug - Moved into the hero_weapon_selection function" + "\n")
-    inventory_position = 1
+    print("Weapon selection time!")
     
-    if not hero.inventory:
-        print("All you've got is a sword, so use it.")
+    if not hero.inventory:                                              # use default weapon if hero inventory is empty
+        print("Looks like all you've got is a sword, so use it.")
+        hero.inventory.append(hero.weapon)
         
         return None
     
-    print("Inventory: ")
-    for each in hero.inventory:
-        print(str(inventory_position) + ". " + each["type"])
-        inventory_position = inventory_position + 1
+    hero_inventory()                                                    # display the hero's inventory
 
     hero_input = input("Enter the number of your weapon of choice: ")
     while hero_input == "":
@@ -48,25 +45,28 @@ def hero_weapon_selection():
         hero_input = input("Enter the number of your weapon of choice: ")
         continue
 
-    hero.weapon = hero.inventory[int(hero_input) - 1]
-    print("Debug - selected weapon is " + str(hero.weapon["type"]))
+    hero.weapon = hero.inventory[int(hero_input) - 1]                   # set hero weapon to the user selection
 
     return None
 
-#Drops the opponents weapon so that the weapon can be added to the users inventory so it can be selected in hero_weapon_selection()
-def drop_opponent_weapon():
-    if monster.health <= 0:
-        opps_weapon = monster.weapon
-        print("The monster dropped: " + str(opps_weapon) + ". " + "Adding to the inventory")
+# function to display the hero's inventory 
+def hero_inventory():
+    inventory_position = 1
 
-        return opps_weapon
+    print("Inventory: ")
+    for each in hero.inventory:
+        print(str(inventory_position) + ". " + each["type"])
+        inventory_position = inventory_position + 1
+
+    return None
 
 # function that captures the hero's damage dealt
 def hero_attack():                                                      
     hero_damage = hero.damage_dealt()
     monster.health = monster.damage_taken(hero_damage)
-    print("Debug - hero dmg dealt is " + str(hero_damage))
-    print("Debug - Monster's health should be: " + str(monster.health))
+    # print("Debug - hero dmg dealt is " + str(hero_damage))
+    # print("Debug - Monster's health should be: " + str(monster.health))
+    print("Hero hit for " + str(hero_damage))
     
     return None
 
@@ -75,29 +75,55 @@ def monster_attack():
     monster.opponent_weapon()
     monster_damage = monster.damage_dealt()
     hero.health = hero.damage_taken(monster_damage)
-    print("Debug - the monsters damage should be: " + str(monster.damage_dealt()))
-    print("Debug - Hero's health should be: " + str(hero.health))
-    print("Debug - The monsters weapon should be: " + str(monster.weapon))
+
+    print("Monster hit back for " + str(monster_damage))
+    print()
+    print("Hero HP: " + str(hero.health) + "      " + "Monster HP: " + str(monster.health)) # display hero and monster hp
+    print("----------------------------")
+    print()
     
+    return None
+
+# function to iterate through the hero/monster battle
+def do_battle():
+    while hero.health > 0 and monster.health > 0:                           # loop until hit points drop below zero 
+        hero_attack()   
+        monster_attack() 
+
     return None
 
 
 if __name__ == "__main__":
     hero = Player()                                                         # creates hero object from Player class
     monster = Opponent()                                                    # creates monster object from Opponent subclass
-    
-    print("Debug - Player hp is " + str(hero.health))
-    print("Debug - Monster hp is " + str(monster.health))
-    
+        
+    hero_weapon_selection()                                                 # player selects hero's weapon
+    do_battle()                                                             # invoke the battle function
 
-    # while hero.health > 0 and monster.health > 0:                         # loop until hit points drop below zero
-    
-    hero_weapon_selection() 
-    hero_attack()   
-    monster_attack() 
-    drop_opponent_weapon()
-                                                # hero selects weapon
+    print("_______________________________")
 
-    print("Debug - hero weapon is " + hero.weapon["type"])
-    print("Debug - hero damage is " + str(hero.weapon["dmg"]))
-    print("Debug point - stopping")
+    while hero.health > 0:
+        print("You've won!" + "\n" + "The monster dropped " + str(monster.weapon))
+        print("You take it as the spoils of war, and stow it in your pack.")
+
+        hero.inventory.append(monster.weapon)
+
+        print("Looks like you're hurt, you need a healing potion..." + "\n")
+        # hero.health = hero.health + random.randrange(30,70)
+        hero.health = 100
+        print("Your health is now " + str(hero.health) + "\n")
+   
+        print("Head's up, here comes the next monster.  Bash it!")
+        # monster.health = random.randrange(40,70)
+        monster.health = 50
+
+        hero_weapon_selection()
+        do_battle()
+
+        continue
+
+    else:
+        print("The monster's beaten you.  It's dancing on your fallen corpse, and taking all your stuff.")
+
+
+    print("Debug point - the hero's dead, stopping")

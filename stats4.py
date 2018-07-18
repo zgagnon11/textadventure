@@ -32,7 +32,7 @@ class Entities:
 class Player(Entities):
     def __init__(self):
         self.health = 100
-        self.strength = 10
+        self.strength = 12
         self.inventory = []
         self.weapon = {"type": "sword", "dmg": 5}
         self.money = 0
@@ -47,8 +47,8 @@ class Player(Entities):
 #Class for the Opponent with inherited attributes from the Player class
 class Opponent(Entities):
     def __init__(self):
-        self.health = 150
-        self.strength = 20
+        self.health = 50
+        self.strength = 12
         self.stamina = 200
         self.inventory = [{"type": "ax", "dmg": 10}, {"type": "mace", "dmg": 8}, {"type": "lance", "dmg": 7}, {"type": "dung pile", "dmg": 1}]
         self.weapon = {"type": "ax", "dmg": 10}
