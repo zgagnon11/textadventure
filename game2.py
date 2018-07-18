@@ -80,7 +80,8 @@ if __name__ == "__main__":
         print("You've won!" + "\n" + "The monster dropped " + str(monster.weapon))
         print("You take it as the spoils of war, and stow it in your pack.")
 
-        hero.inventory.append(monster.weapon)
+        # hero.inventory.append(monster.weapon)
+        hero.player_inventory_update(monster.weapon)
 
         print("Looks like you're hurt, you need a healing potion..." + "\n")
         # hero.health = hero.health + random.randrange(30,70)
@@ -89,7 +90,7 @@ if __name__ == "__main__":
    
         print("Head's up, here comes the next monster.  Bash it!")
         # monster.health = random.randrange(40,70)
-        monster.health = 50
+        monster.health = random.randrange(30, 70)
 
         hero_weapon_selection()
         monster.opponent_weapon()
