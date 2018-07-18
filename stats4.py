@@ -50,7 +50,13 @@ class Opponent(Entities):
         self.health = 50
         self.strength = 12
         self.stamina = 200
-        self.inventory = [{"type": "ax", "dmg": 10}, {"type": "mace", "dmg": 8}, {"type": "lance", "dmg": 7}, {"type": "dung pile", "dmg": 1}]
+        self.inventory = [
+            {"type": "ax", "dmg": 10},
+            {"type": "mace", "dmg": 8},
+            {"type": "lance", "dmg": 7},
+            {"type": "dung pile", "dmg": 1},
+            {"type": "petrified banana", "dmg": 3}
+        ]
         self.weapon = {"type": "ax", "dmg": 10}
         self.money = random.randrange(100)
 
