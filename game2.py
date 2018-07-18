@@ -94,9 +94,7 @@ def do_battle():
 
 if __name__ == "__main__":
     hero = Player()                                                         # creates hero object from Player class
-    monster = Opponent()  
-    monster.opponent_weapon()
-    print(monster.opponent_weapon())                                                  # creates monster object from Opponent subclass
+    monster = Opponent()                                                   # creates monster object from Opponent subclass
         
     hero_weapon_selection()                                                 # player selects hero's weapon
     do_battle()                                                             # invoke the battle function
@@ -119,6 +117,8 @@ if __name__ == "__main__":
         monster.health = 50
 
         hero_weapon_selection()
+        monster.opponent_weapon()
+        print(monster.opponent_weapon()) 
         do_battle()
 
         continue
