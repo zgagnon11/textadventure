@@ -16,10 +16,10 @@ def hero_weapon_selection():
 
     hero_input = input("Enter the number of your weapon of choice: ")
 
-    if hero_input not in hero.inventory:
+    while hero_input == "":
         print("The enemy approaches, you need to choose your weapon!")
-        print("Please use a valid inventory number")
         hero_input = input("Enter the number of your weapon of choice: ")
+        continue
 
 
     hero.weapon = hero.inventory[int(hero_input) - 1]                   # set hero weapon to the user selection
