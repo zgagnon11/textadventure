@@ -106,3 +106,4 @@ if __name__ == "__main__":
 
 
     print("Debug point - the hero's dead, stopping")
+#test
