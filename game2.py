@@ -14,15 +14,22 @@ def hero_weapon_selection():
     
     hero_inventory()                                                    # display the hero's inventory
 
-    hero_input = input("Enter the number of your weapon of choice: ")
+    
 
-    try:
-        while int(hero_input) > len(hero.inventory) or int(hero_input) < len(hero.inventory) or hero_input == "0":
+    while True:
+        try:
+            hero_input = int(input("Enter the number of your weapon of choice: "))
+            if 0 < hero_input <= len(hero.inventory): 
+                #valid input
+                break
+            #if hero_input > len(hero.inventory) or hero_input < len(hero.inventory) or hero_input == 0:
             print("Please enter a valid inventory number")
-            hero_input = input("Enter the number of your weapon of choice: ")
-    except ValueError:
-        print("DEBUG --- for the empty string")
-        hero_input = input("Enter the number of your weapon of choice: ")
+            #else:
+                #break 
+        except ValueError:
+            print("Please enter a valid number and not a string!")
+         
+
 
     hero.weapon = hero.inventory[int(hero_input) - 1]                   # set hero weapon to the user selection
     
@@ -99,6 +106,7 @@ if __name__ == "__main__":
         hero_weapon_selection()
         monster.opponent_weapon()
         print(monster.opponent_weapon()) 
+        print(hero.weapon)
         do_battle()
 
         continue
