@@ -14,8 +14,6 @@ def hero_weapon_selection():
     
     hero_inventory()                                                    # display the hero's inventory
 
-    
-
     while True:
         try:
             hero_input = int(input("Enter the number of your weapon of choice: "))
@@ -106,7 +104,6 @@ if __name__ == "__main__":
         hero_weapon_selection()
         monster.opponent_weapon()
         print(monster.opponent_weapon()) 
-        print(hero.weapon)
         do_battle()
 
         continue
