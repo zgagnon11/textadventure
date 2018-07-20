@@ -15,18 +15,25 @@ def hero_weapon_selection():
     hero_inventory()                                                    # display the hero's inventory
 
     hero_input = input("Enter the number of your weapon of choice: ")
-
-    try:
-        while int(hero_input) > len(hero.inventory) or int(hero_input) < len(hero.inventory) or hero_input == "0":
-            print("Please enter a valid inventory number")
-            hero_input = input("Enter the number of your weapon of choice: ")
-    except ValueError:
-        print("DEBUG --- for the empty string")
-        hero_input = input("Enter the number of your weapon of choice: ")
-
     hero.weapon = hero.inventory[int(hero_input) - 1]                   # set hero weapon to the user selection
     
+    return hero_input
+
+def input_policing(user_input):
+    if user_input == "":
+        print("Please enter a valid inventory number")
+    elif user_input == "0":
+        print("Please dont enter a 0 dingus")
+    elif int(user_input) > len(hero.inventory):
+        print("Please dont enter a number greater than what is in the list")
+    elif user_input == str:
+        print("WTFUCK!")
+    else:
+        pass
+
     return None
+the_weapon = hero_weapon_selection()
+input_policing(the_weapon)
 
 # function to display the hero's inventory 
 def hero_inventory():
@@ -108,4 +115,3 @@ if __name__ == "__main__":
 
 
     print("Debug point - the hero's dead, stopping")
-#test
