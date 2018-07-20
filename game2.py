@@ -112,5 +112,6 @@ if __name__ == "__main__":
         print("The monster's beaten you.  It's dancing on your fallen corpse, and taking all your stuff.")
 
 
-    print("Debug point - the hero's dead, stopping")
+    print("YOU DIED")
+    print("[D A R K   S O U L S   I N T N S I F I E S]")
 #test
