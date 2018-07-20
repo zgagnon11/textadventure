@@ -103,7 +103,7 @@ if __name__ == "__main__":
 
         hero_weapon_selection()
         monster.opponent_weapon()
-        print(monster.opponent_weapon()) 
+        #print(monster.opponent_weapon()) 
         do_battle()
 
         continue

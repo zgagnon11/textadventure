@@ -51,11 +51,31 @@ class Opponent(Entities):
         self.strength = 12
         self.stamina = 200
         self.inventory = [
-            {"type": "ax", "dmg": 10},
+            {"type": "axe", "dmg": 10},
             {"type": "mace", "dmg": 8},
             {"type": "lance", "dmg": 7},
             {"type": "dung pile", "dmg": 1},
-            {"type": "petrified banana", "dmg": 3}
+            {"type": "petrified banana", "dmg": 3},
+            {"type": "brass knuckles", "dmg": 2},
+            {"type": "spiked gauntlet", "dmg": 3},
+            {"type": "morningstar", "dmg": 10},
+            {"type": "longspear", "dmg": 6},
+            {"type": "boar spear", "dmg": 8},
+            {"type": "javelin", "dmg": 4},
+            {"type": "dagger", "dmg": 3},
+            {"type": "machete", "dmg": 4},
+            {"type": "heavy pick", "dmg": 4},
+            {"type": "scimitar", "dmg": 6},
+            {"type": "trident", "dmg": 6},
+            {"type": "warhammer", "dmg": 6},
+            {"type": "flail", "dmg": 6},
+            {"type": "glaive", "dmg": 8},
+            {"type": "greatsword", "dmg": 10},
+            {"type": "greatclub", "dmg": 8},
+            {"type": "greataxe", "dmg": 10},
+            {"type": "scythe", "dmg": 6},
+            {"type": "whip", "dmg": 2},
+            {"type": "meat cleaver", "dmg": 4}
         ]
         self.weapon = {"type": "ax", "dmg": 10}
         self.money = random.randrange(100)
